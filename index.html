@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Electricity Bill Calculator</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body{
+  font-family: Arial;
+  background: #0f172a;
+  color: white;
+  text-align: center;
+  padding: 30px;
+}
+.box{
+  background: white;
+  color: black;
+  padding: 25px;
+  border-radius: 20px;
+  display: inline-block;
+  max-width: 350px;
+  width: 100%;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+input{
+  padding: 12px;
+  margin: 15px 0;
+  width: 90%;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+button{
+  padding: 12px 25px;
+  background: #16a34a;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: bold;
+}
+h2{margin-bottom: 5px}
+#result{
+  margin-top: 20px;
+  color: #16a34a;
+  font-size: 20px;
+}
+</style>
+</head>
+<body>
+
+<div class="box">
+<h2>⚡ Electricity Bill Calculator</h2>
+<p>ನಿಮ್ಮ Units ನಮೂದಿಸಿ</p>
+<input type="number" id="units" placeholder="Ex: 120">
+<br>
+<button onclick="calc()">Calculate Bill</button>
+<h3 id="result"></h3>
+</div>
+
+<script>
+function calc(){
+  let u = document.getElementById("units").value;
+  if(u==""){ alert("Units ಹಾಕಿ"); return; }
+  u = Number(u);
+  let bill = 0;
+  if(u <= 50){
+    bill = u * 4;
+  } else if(u <= 150){
+    bill = 50*4 + (u-50)*6;
+  } else {
+    bill = 50*4 + 100*6 + (u-150)*8;
+  }
+  document.getElementById("result").innerText = "ನಿಮ್ಮ Bill: ₹ " + bill;
+}
+</script>
+
+</body>
+  </html>
